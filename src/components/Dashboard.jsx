@@ -47,6 +47,11 @@ const Dashboard = () => {
   return (
     <div>
       <h2>Pharmacy Dashboard</h2>
+      <p
+      style={{
+        paddingTop: "20px"
+      }}
+      ><b>Total</b>: {Object.values(medicines).reduce((c, i) => c + i.stock, 0)}</p>
       <table>
         <thead>
           <tr>
