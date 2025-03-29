@@ -48,27 +48,42 @@ const Dashboard = () => {
     <div>
       <h2>Pharmacy Dashboard</h2>
       <p
-      style={{
-        paddingTop: "20px"
-      }}
+        style={{
+          paddingTop: "20px"
+        }}
       ><b>Total</b>: {Object.values(medicines).reduce((c, i) => c + i.stock, 0)}</p>
-      <table>
+      <table style={{ fontSize: '0.7rem', width: "100%", borderCollapse: "collapse", border: "1px solid gray", boxShadow: "2px 2px 10px rgba(0,0,0,0.1)", borderRadius: "8px" }}>
         <thead>
-          <tr>
-            <th>Medicine Name</th>
-            <th>Stock</th>
-            <th>Use Indication</th>
-            <th>Actions</th>
+          <tr style={{ backgroundColor: "#007BFF", color: "white", textAlign: "left" }}>
+            <th style={{ padding: "8px", border: "1px solid gray" }}>Medicine Name</th>
+            <th style={{ padding: "8px", border: "1px solid gray" }}>Stock</th>
+            <th style={{ padding: "8px", border: "1px solid gray" }}>Use Indication</th>
+            <th style={{ padding: "8px", border: "1px solid gray" }}>Actions</th>
           </tr>
         </thead>
         <tbody>
           {Object.values(medicines).map((med, index) => (
-            <tr key={index}>
-              <td>{med.medicine_name}</td>
-              <td>{med.stock}</td>
-              <td>{med.use_indication}</td>
-              <td>
-                <button onClick={() => handleDelete(med.ids[0])}>Delete</button>
+            <tr key={index} style={{ backgroundColor: index % 2 === 0 ? "#f9f9f9" : "white", transition: "background 0.3s" }}>
+              <td style={{ padding: "8px", border: "1px solid gray" }}>{med.medicine_name}</td>
+              <td style={{ padding: "8px", border: "1px solid gray" }}>{med.stock}</td>
+              <td style={{ padding: "8px", border: "1px solid gray" }}>{med.use_indication}</td>
+              <td style={{ padding: "8px", border: "1px solid gray" }}>
+                <button
+                  onClick={() => handleDelete(med.ids[0])}
+                  style={{
+                    backgroundColor: "#DC3545",
+                    color: "white",
+                    padding: "8px 12px",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    transition: "background 0.3s"
+                  }}
+                  onMouseOver={(e) => e.target.style.backgroundColor = "#C82333"}
+                  onMouseOut={(e) => e.target.style.backgroundColor = "#DC3545"}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
